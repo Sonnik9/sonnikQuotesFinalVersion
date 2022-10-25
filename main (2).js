@@ -206,7 +206,7 @@ function renderinG() {
   else {
     headerItem.textContent = 'Home';
     containerPageHome.style.display = 'none';
-    genericPageMyCase(JSON.parse(localStorage.getItem('case')))   
+    genericPageMyCase()   
   } 
 }
 
@@ -217,8 +217,8 @@ headerItem.onclick = function ruleForRenderinG(e) {
   location.hash = '#home'
 }
 
-function genericPageMyCase(content) {
-    content.forEach((el, inddd) => {
+function genericPageMyCase() {
+  JSON.parse(localStorage.getItem('case')).forEach((el, inddd) => {
     let post = document.createElement('div');
     post.className = 'post';
     let element = `<div class="border-frame">    
