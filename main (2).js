@@ -14,65 +14,64 @@
  {"text":"Good people are good because they've come to wisdom through failure. We get very little wisdom from success, you know.","author":"William Saroyan","id":"yZ1f2VZoK93Z"},{"text":"Knowledge is knowing that a tomato is a fruit. Wisdom is knowing not to put it in a fruit salad.","author":"Brian O'Driscoll","id":"bjaX05_RVQ"},{"text":"Living at risk is jumping off the cliff and building your wings on the way down.","author":"Ray Bradbury","id":"3nM-lSBTxLVL"},{"text":"It is good even for old men to learn wisdom.","author":"Aeschylus","id":"1YubdPwZ3e"},{"text":"Most of the important things in the world have been accomplished by people who have kept on trying when there seemed to be no hope at all.","author":"Dale Carnegie","id":"g1GZtzlspywZ"},{"text":"I can't listen to that much Wagner. I start getting the urge to conquer Poland.","author":"Woody Allen","id":"GmVjBvFG3W"},{"text":"You are not here merely to make a living. You are here in order to enable the world to live more amply, with greater vision, with a finer spirit of hope and achievement. You are here to enrich the world, and you impoverish yourself if you forget the errand.","author":"Woodrow Wilson","id":"psDF8kzy2M"},{"text":"You always have two choices: your commitment versus your fear.","author":"Sammy Davis Jr.","id":"p2tRiR2FRe"},{"text":"The person born with a talent they are meant to use will find their greatest happiness in using it.","author":"Johann Wolfgang von Goethe","id":"GGBS9dCAij1v"},{"text":"There are two ways to slide easily through life: to believe everything or to doubt everything; both ways save us from thinking.","author":"Alfred Korzybski","id":"6-nBiTOMcsqK"},{"text":"The most certain sign of wisdom is cheerfulness.","author":"Michel de Montaigne","id":"GM68LOEYM9"},{"text":"Read as you taste fruit or savor wine, or enjoy friendship, love or life.","author":"George Herbert","id":"auaOSkmWy91"},{"text":"Each misfortune you encounter will carry in it the seed of tomorrows good luck.","author":"Og Mandino","id":"__Y4zBlGjiI"}];
 
 
-  ///////////////////////////////////////////////////////////////
-  let bodyContainer = document.querySelector('.bodyClass');
-  let headerItem = document.getElementById('header-item');
-  let containerPageHome = document.getElementById('containerPageHome');
-  let containerPageMyCase = document.getElementById('containerPageMyCase');
-  let arrDirectRow = [];
- 
-  let arrDirectRowForImg = [];
-  let homeTemplate = `<h1>Daily Quotes</h1>
-  
-                      <div class="container-img">                     
-                        <img id="altImg" class="altImg" Alt="Image Of Nature">  
-                      </div>        
-                      
-                      <div class="border-frame">
-                        <div id="textQuotes" class="border-textQuotes">                
-                        </div>
-                        <div id="author" class="author">                  
-                        </div>       
-                      </div>           
-                      
-                      <div class="control">
-                        <button id="searchBtn" class="btn">
-                          Search
-                        </button>
-                        <div class="saveBox" id="saveBox" data-title="Save">
-                          <img class="saveInCase" src="./img/save--v1.png" alt="">
-                        </div>
-                        <div class="language" id="language">             
-                        </div>
-                      </div>`;
-                      
-  location.hash = 'home';
-  
-  function genericPageHome() {  
-    containerPageHome.innerHTML = homeTemplate;
-    headerItem.textContent = 'My Case';  
+///////////////////////////////////////////////////////////////////////
+let bodyContainer = document.querySelector('.bodyClass');
+let headerItem = document.getElementById('header-item');
+let containerPageHome = document.getElementById('containerPageHome');
+let containerPageMyCase = document.getElementById('containerPageMyCase');
+let arrDirectRow = [];
+let arrDirectRowForImg = [];
+let homeTemplate = `<h1>Daily Quotes</h1>
+
+                    <div class="container-img">                     
+                      <img id="altImg" class="altImg" Alt="Image Of Nature">  
+                    </div>        
+                    
+                    <div class="border-frame">
+                      <div id="textQuotes" class="border-textQuotes">                
+                      </div>
+                      <div id="author" class="author">                  
+                      </div>       
+                    </div>           
+                    
+                    <div class="control">
+                      <button id="searchBtn" class="btn">
+                        Search
+                      </button>
+                      <div class="saveBox" id="saveBox" data-title="Save">
+                        <img class="saveInCase" src="./img/save--v1.png" alt="">
+                      </div>
+                      <div class="language" id="language">             
+                      </div>
+                    </div>`;
+                    
+location.hash = 'home';
+
+function genericPageHome() {  
+  containerPageHome.innerHTML = homeTemplate;
+  headerItem.textContent = 'My Case';  
+}
+genericPageHome();
+
+function randomUnorderRow() {  
+  for(i = 0; i < 868; i++) {
+    arrDirectRow.push(i)
   }
-  genericPageHome();
-  
-  function randomUnorderRow() {  
-    for(i = 0; i < 868; i++) {
-      arrDirectRow.push(i)
-    }
-    arrDirectRow.sort(()=>Math.random()-0.5); 
-    return arrDirectRow
+  arrDirectRow.sort(()=>Math.random()-0.5); 
+  return arrDirectRow
+}
+randomUnorderRow();
+
+function randomUnOrderRowForImg() {  
+  for(i = 0; i < 100; i++) {
+    arrDirectRowForImg.push(i)
   }
-  randomUnorderRow();
-  
-  function randomUnOrderRowForImg() {  
-    for(i = 0; i < 100; i++) {
-      arrDirectRowForImg.push(i)
-    }
-    arrDirectRowForImg.sort(()=>Math.random()-0.5); 
-    return arrDirectRowForImg
-  }
-  randomUnOrderRowForImg();
-  
- /////////////////////////////////////////////////// 
+  arrDirectRowForImg.sort(()=>Math.random()-0.5); 
+  return arrDirectRowForImg
+}
+randomUnOrderRowForImg();
+
+///////////////////////////////////////////////////////////////// 
   
 let container = document.getElementById('container')
 let textContainer = document.getElementById('textQuotes');
@@ -83,9 +82,6 @@ let webImg = document.getElementById('webImgId');
 let myCase = document.getElementById('header-item');
 let saveQuote = document.getElementById('saveBox');
 let globalChange = '';
-let resultForCaseItem = JSON.parse(localStorage.getItem('case')) || [{"text":"Read as you taste fruit or savor wine, or enjoy friendship, love or life.",
-  "author":"George Herbert","id":"auaOSkmWy91"},];
-
 let curentId = '';
 let obgRu = {
     text: "",
@@ -98,7 +94,6 @@ let obgEn = {
 };
 let indList = 0;
 let indList2 = 0;
-
 
 setTimeout(loadQuote, 1500);
 let langSelect = document.getElementById('language');
@@ -131,9 +126,11 @@ function loadQuote() {
                            </select>  `; 
                            
   convert('en', 'ru');                       
-  flagAlt = true;  
+  // flagAlt = true;  
 }
-////////////////////////////////////////////////////
+
+///////////////////////////////////////////////////////////////////
+
 async function convert(source, target){   
   obgEn.text = textContainer.textContent;
   obgEn.avtor = authorContainer.textContent;
@@ -158,8 +155,7 @@ async function convert(source, target){
   globalChange = targetTranslation.translatedText;
       if(globalChange != '') {       
         resultTransleting();
-      }
-     
+      }     
 }
 
 function resultTransleting() {           
@@ -189,7 +185,8 @@ function readyText() {
   }   
 }
 
-//////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////
+
 window.addEventListener('hashchange', renderinG);
 
 function renderinG() { 
@@ -202,7 +199,8 @@ function renderinG() {
   else {
     headerItem.textContent = 'Home';
     containerPageHome.style.display = 'none';
-    genericPageMyCase(resultForCaseItem)   
+    let arrCase = getCase();
+    genericPageMyCase(arrCase)   
   } 
 }
 
@@ -236,46 +234,58 @@ function genericPageMyCase(content) {
   });
 }
 
-////////////////////////////////////////////////////
-  let flagRepetitions = true;
+///////////////////////////////////////////////////////////////////////////
 
-  function saveCurentQuote() { 
-    // resultForCaseItem = JSON.parse(localStorage.getItem('case')) || [];
-    resultForCaseItem.forEach(el =>  {
-      if(curentId == el.id)
-      flagRepetitions = false;
-    });
-    setTimeout(saveCurentQuote2, 1000);       
-  }
+let flagRepetitions = true;
   
-  function saveCurentQuote2() {
-    if(flagRepetitions == true){
-      // if(resultForCaseItem == [])
-      // localStorage.setItem('case', JSON.stringify(resultForCaseItem));
-      ////////////////////////////////////////////////////////////////
-      resultForCaseItem = JSON.parse(localStorage.getItem('case'));
-      resultForCaseItem.push({en: `${obgEn.text} <br> <p class="spanAuthor">${obgEn.avtor}</p>`,
-      ru: `${obgRu.text} <br> <p class="spanAuthor">${obgRu.avtor}</p>`, id: `${curentId}`});
-      localStorage.setItem('case', JSON.stringify(resultForCaseItem));     
-    }
-    else {   
+function getCase() {
+  let resultForCaseItem = localStorage.getItem('case');
+     if(resultForCaseItem != null) {
+        return JSON.parse(resultForCaseItem)
+     }
+     else 
+     return [];
+}
+
+function saveCurentQuote() {
+  let casse = getCase();
+  casse.forEach(el =>  {
+        if(curentId == el.id)
+        flagRepetitions = false;
+      });
+  setTimeout(saveCurentQuote2, 1000);
+
+  function saveCurentQuote2() {  
+      if(flagRepetitions == true) {
+        casse
+          .push({
+            en: `${obgEn.text} <br> <p class="spanAuthor">${obgEn.avtor}</p>`,
+            ru: `${obgRu.text} <br> <p class="spanAuthor">${obgRu.avtor}</p>`,
+            id: `${curentId}`
+          });
+      }    
+      else {
         smoke.alert ('This elemen already exist in My Case');
         flagRepetitions = true;
-      }  
+      }
+      localStorage.setItem('case', JSON.stringify(casse));
   }
+}
   
-  function removeItemCase(e) { 
-    let imgId = document.querySelectorAll('.hide');
-        imgId.forEach((el, ind) => {
-          el.dataset.order = ind;
-        });
-    if(e.target.className == 'hide') {     
-      resultForCaseItem = JSON.parse(localStorage.getItem('case'));     
-      resultForCaseItem.splice(e.target.dataset.order, 1);     
-      e.target.parentElement.parentElement.parentElement.remove();      
-      localStorage.setItem('case', JSON.stringify(resultForCaseItem));        
-    }   
-  }
+function removeItemCase(e) { 
+  let imgId = document.querySelectorAll('.hide');
+      imgId.forEach((el, ind) => {
+        el.dataset.order = ind;
+      });
+  let arrCase = getCase();
+  if(e.target.className == 'hide') {     
+    arrCase.splice(e.target.dataset.order, 1);     
+    e.target.parentElement.parentElement.parentElement.remove();      
+    localStorage.setItem('case',  JSON.stringify(arrCase));        
+  }   
+}
+
+// localStorage.removeItem('case')
 
 
 
