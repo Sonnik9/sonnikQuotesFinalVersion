@@ -83,10 +83,9 @@ let webImg = document.getElementById('webImgId');
 let myCase = document.getElementById('header-item');
 let saveQuote = document.getElementById('saveBox');
 let globalChange = '';
-let resultForCaseItem = [
-  {"text":"Read as you taste fruit or savor wine, or enjoy friendship, love or life.",
-  "author":"George Herbert","id":"auaOSkmWy91"},
-];
+let resultForCaseItem = JSON.parse(localStorage.getItem('case')) || [{"text":"Read as you taste fruit or savor wine, or enjoy friendship, love or life.",
+  "author":"George Herbert","id":"auaOSkmWy91"},];
+
 let curentId = '';
 let obgRu = {
     text: "",
@@ -203,7 +202,7 @@ function renderinG() {
   else {
     headerItem.textContent = 'Home';
     containerPageHome.style.display = 'none';
-    genericPageMyCase()   
+    genericPageMyCase(resultForCaseItem)   
   } 
 }
 
@@ -214,8 +213,8 @@ headerItem.onclick = function ruleForRenderinG(e) {
   location.hash = '#home'
 }
 
-function genericPageMyCase() {
-  JSON.parse(localStorage.getItem('case')).forEach((el, inddd) => {
+function genericPageMyCase(content) {
+  content.forEach((el, inddd) => {
     let post = document.createElement('div');
     post.className = 'post';
     let element = `<div class="border-frame">    
@@ -241,7 +240,7 @@ function genericPageMyCase() {
   let flagRepetitions = true;
 
   function saveCurentQuote() { 
-    resultForCaseItem = JSON.parse(localStorage.getItem('case'));
+    // resultForCaseItem = JSON.parse(localStorage.getItem('case')) || [];
     resultForCaseItem.forEach(el =>  {
       if(curentId == el.id)
       flagRepetitions = false;
@@ -251,8 +250,8 @@ function genericPageMyCase() {
   
   function saveCurentQuote2() {
     if(flagRepetitions == true){
-      if(resultForCaseItem == [])
-      localStorage.setItem('case', JSON.stringify(resultForCaseItem));
+      // if(resultForCaseItem == [])
+      // localStorage.setItem('case', JSON.stringify(resultForCaseItem));
       ////////////////////////////////////////////////////////////////
       resultForCaseItem = JSON.parse(localStorage.getItem('case'));
       resultForCaseItem.push({en: `${obgEn.text} <br> <p class="spanAuthor">${obgEn.avtor}</p>`,
@@ -277,5 +276,9 @@ function genericPageMyCase() {
       localStorage.setItem('case', JSON.stringify(resultForCaseItem));        
     }   
   }
+
+
+
+
 
 
