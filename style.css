@@ -104,7 +104,7 @@ h1 {
     text-align: center;
     color: #f8f9fa;
     font-weight: 700;
-    font-size: calc(12px + 9*(100vw/1242));
+    font-size: 22.8px;
     background-color: #198754;     
 }
 .btn:hover {    
@@ -112,7 +112,7 @@ h1 {
     color: #eff3f7;
     border-radius: 9px;
     transition: 600ms;    
-    font-size: calc(12.1px + 9.1*(100vw/1242));
+    font-size: 23px;
 }
 .saveBox {
     position: relative;
@@ -148,7 +148,7 @@ h1 {
 .select {
     cursor: pointer;
     color: rgba(33,37,41);
-    font-size: calc(11px + 5*(100vw/1242));
+    font-size: 17.5px;
     font-weight: 700;
     background-color: #f8f9fa;
     border-radius: 4px;
@@ -203,20 +203,12 @@ hr {
         font-size: calc(18px + (10 + 10*0.7)*((100vw - 320px) / 1242));
     }
 
-    .select {
-        font-size: calc(11px + (5 + 5*0.7)*((100vw - 320px) / 1242));
-    }
-
     .saveBox:hover::after {
         font-size: calc(8px + (4 + 4*0.7)*((100vw - 320px) / 1242));
     }
 
     .btn:hover {
         font-size: calc(12.5px + (9.5 + 9.5*0.7)*((100vw - 320px) / 1242));
-    }
-
-    .btn {
-        font-size: calc(12px + (9 + 9*0.7)*((100vw - 320px) / 1242));
     }
 
     .author {
