@@ -5,7 +5,7 @@ html, body {
     font-family: 'Lucida Console';
     padding: 0;
     margin: 0; 
-    overflow-x: hidden;      
+    /* overflow-x: hidden;       */
 }
 .container{    
     margin: 79px auto;
@@ -183,27 +183,50 @@ hr {
 /* animation //////////////////////////*/
 @keyframes hide {
     0% {
-        opacity: 1;       
+        opacity: 1;
+        padding: 24px 24px 16px 24px;
+        margin-bottom: 20px; 
+        line-height: calc(19px + 18*(100vw/1242));      
     }
    20% {
-        opacity: 0.8;       
+        opacity: 0.8;
+        padding: 19px 24px 13px 24px;
+        margin-bottom: 16px;
+        line-height: calc((19px + 18*(100vw/1242))*0.8);        
     }
     40% {
-        opacity: 0.6;        
+        opacity: 0.6;
+        padding: 14px 24px 10px 24px;
+        margin-bottom: 12px;
+        line-height: calc((19px + 18*(100vw/1242))*0.6);         
     }
     60% {
-      opacity: 0.4;      
+      opacity: 0.4;
+      padding: 10px 24px 7px 24px;
+        margin-bottom: 8px;
+        line-height: calc((19px + 18*(100vw/1242))*0.4);       
     }
     80% {
-      opacity: 0.2;                           
+      opacity: 0.2;
+      padding: 5px 24px 3px 24px;
+        margin-bottom: 4px;
+        line-height: calc((19px + 18*(100vw/1242))*0.2);                            
     }         
 
     100% {
       opacity: 0;
+      padding: 0px 24px 0px 24px;
+      margin-bottom: 0px;
+      line-height: 0px; 
     }                          
 } 
 
 .post {
+    -moz-user-select: -moz-none;
+    -o-user-select: none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+    user-select: none;   
     animation-name: hide;
     animation-duration: 0.5s;
     animation-fill-mode: forwards;
