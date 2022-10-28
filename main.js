@@ -252,43 +252,46 @@ function saveCurentQuote() {
   }
 }
  
-function removeItemCase(e) { 
-  smoke.confirm(('Are you realy want to remove this quote?'), function (result) {
-    if (result === false) {
-      setTimeout(function(){containerPageMyCase.addEventListener('click', removeItemCase, {once: true})}, 300);
-      return;
-    } 
-   
+function removeItemCase(e) {     
+    
     let imgId = document.querySelectorAll('.hide');
     imgId.forEach((el, ind) => {
       el.dataset.order = ind;
         });
     let arrCase = getCase();
-    if(e.target.className == 'hide') {     
-      arrCase.splice(e.target.dataset.order, 1);
-      let postBlock = e.target.parentElement.parentElement.parentElement; 
-      let currentHeight = Math.floor(JSON.parse(getComputedStyle(postBlock).height.slice(0, -2)));    
-      postBlock.style.animationPlayState = 'running';   
-      setTimeout(movessAnime, 600); 
+    if(e.target.className == 'hide') { 
+      smoke.confirm(('Are you realy want to remove this quote?'), function (result) {
+        if (result === false || (result === false && result === true)) {
+          setTimeout(function(){containerPageMyCase.addEventListener('click', removeItemCase, {once: true})}, 300);
+          return;
+        }       
+         
+         arrCase.splice(e.target.dataset.order, 1);
+         let postBlock = e.target.parentElement.parentElement.parentElement; 
+         let currentHeight = Math.floor(JSON.parse(getComputedStyle(postBlock).height.slice(0, -2)));    
+         postBlock.style.animationPlayState = 'running';          
+         setTimeout(movessAnime, 600); 
+         
+         function movessAnime() {  
+           if(currentHeight != 0) {
+             currentHeight = currentHeight - 15;  
+             postBlock.style.height = currentHeight + 'px';   
+             setTimeout(movessAnime, 1);
+           }
+           else { 
+             postBlock.height = '0px'      
+             return  
+           }        
+         }
+        
+         // setTimeout(function (){postBlock.remove()}, 1500);    
+         /////////////////////////////////////////////////////////////////    
+         localStorage.setItem('case',  JSON.stringify(arrCase));
       
-      function movessAnime() {  
-        if(currentHeight != 0) {
-          currentHeight = currentHeight - 15;  
-          postBlock.style.height = currentHeight + 'px';   
-          setTimeout(movessAnime, 1);
-        }
-        else { 
-          postBlock.height = '0px'      
-          return  
-        }        
-      }
-      setTimeout(function(){containerPageMyCase.addEventListener('click', removeItemCase, {once: true})}, 300);
-      // setTimeout(function (){postBlock.remove()}, 1500);    
-      /////////////////////////////////////////////////////////////////    
-      localStorage.setItem('case',  JSON.stringify(arrCase));        
-    }   
+      }); 
      
-  }); 
+    } 
+    setTimeout(function(){containerPageMyCase.addEventListener('click', removeItemCase, {once: true})}, 900);
  
 }
 
