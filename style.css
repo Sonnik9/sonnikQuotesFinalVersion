@@ -7,7 +7,7 @@ html, body {
     margin: 0; 
     /* overflow-x: hidden;       */
 }
-.container{    
+.container {    
     margin: 79px auto;
     text-align: center;
     width: 70%;   
@@ -20,6 +20,7 @@ header {
     width: 100%;
     background-color: rgba(25, 135, 84, 0.7);   
     position: fixed;
+    z-index: 1000;
     top: 0px;    
 }
 .flex-header {

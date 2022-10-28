@@ -255,7 +255,7 @@ function saveCurentQuote() {
 function removeItemCase(e) { 
   smoke.confirm(('Are you realy want to remove this quote?'), function (result) {
     if (result === false) {
-      setTimeout(function(){containerPageMyCase.addEventListener('click', removeItemCase, {once: true})}, 500);
+      setTimeout(function(){containerPageMyCase.addEventListener('click', removeItemCase, {once: true})}, 300);
       return;
     } 
    
@@ -282,7 +282,7 @@ function removeItemCase(e) {
           return  
         }        
       }
-      setTimeout(function(){containerPageMyCase.addEventListener('click', removeItemCase, {once: true})}, 500);
+      setTimeout(function(){containerPageMyCase.addEventListener('click', removeItemCase, {once: true})}, 300);
       // setTimeout(function (){postBlock.remove()}, 1500);    
       /////////////////////////////////////////////////////////////////    
       localStorage.setItem('case',  JSON.stringify(arrCase));        
