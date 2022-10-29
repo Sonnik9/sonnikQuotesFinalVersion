@@ -69,9 +69,14 @@ let curentId = '';
 let indList = 0;
 let indList2 = 0;
 
-setTimeout(loadQuote, 1000);
+
 let langSelect = document.getElementById('language');
+let isResizeble = false;
+setTimeout(loadQuote, 1000);
 searchQuote.addEventListener('click', loadQuote);
+searchQuote.removeEventListener('click', loadQuote); 
+
+
 
 function randomChoise() {  
   indList++; 
@@ -214,38 +219,36 @@ function removeItemCase(e) {
       let imgId = document.querySelectorAll('.hide');
       imgId.forEach((el, ind) => {
         el.dataset.order = ind;
-      });  
-      
-      console.log(e.target.dataset.order)
+      });     
+     
       let arrCase = getCase();
       smoke.confirm(('Are you realy want to remove this quote?'), function (result) {
         if (result === false || (result === false && result === true)) {
           setTimeout(function(){containerPageMyCase.addEventListener('click', removeItemCase, {once: true})}, 300);
           return;
-        }       
-        console.log(arrCase)
-         arrCase.splice(e.target.dataset.order, 1);
-         console.log(arrCase)
-         let postBlock = e.target.parentElement.parentElement.parentElement; 
-         let currentHeight = Math.floor(JSON.parse(getComputedStyle(postBlock).height.slice(0, -2)));    
-         postBlock.style.animationPlayState = 'running';          
-         movessAnime(); 
+        }    
+        arrCase.splice(e.target.dataset.order, 1);
          
-         function movessAnime() {  
-           if(currentHeight != 0) {
-             currentHeight = currentHeight - 1;  
-             postBlock.style.height = currentHeight + 'px';   
-             setTimeout(movessAnime, 0.1);
-           }
-           else { 
-                 
-             return  
-           }        
-         }
+        let postBlock = e.target.parentElement.parentElement.parentElement; 
+        ////////////////////////////////////////////////////////////////
+        let currentHeight = Math.floor(JSON.parse(getComputedStyle(postBlock).height.slice(0, -2)));    
+        postBlock.style.animationPlayState = 'running';          
+        movessAnime(); 
         
-         setTimeout(function (){postBlock.remove()}, 700);    
-         /////////////////////////////////////////////////////////////////    
-         localStorage.setItem('case',  JSON.stringify(arrCase));
+        function movessAnime() {  
+          if(currentHeight != 0) {
+            currentHeight = currentHeight - 1;  
+            postBlock.style.height = currentHeight + 'px';   
+            setTimeout(movessAnime, 0.1);
+          }
+          else { 
+                
+            return  
+          }        
+        }
+        setTimeout(function (){postBlock.remove()}, 700);    
+        /////////////////////////////////////////////////////////////////    
+        localStorage.setItem('case',  JSON.stringify(arrCase));
       
       }); 
      

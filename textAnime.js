@@ -8,11 +8,9 @@ typewriterForText = () => {
     } 
     else {
         textPosition1 = 0; 
-        typewriterAuthor()   
+        typewriterAuthor();   
         return 
-
-    }
-    
+    }    
 }
 
 typewriterAuthor = () => {
@@ -20,7 +18,10 @@ typewriterAuthor = () => {
     if(textPosition2++ != dataQuotes[arrDirectRow[indList]].author.length) {
        setTimeout("typewriterAuthor()", 150);
     } 
-    else 
-    textPosition2 = 0;
-    return   
+    else {
+        textPosition2 = 0;
+        isResizeble = false;
+        searchQuote.addEventListener('click', loadQuote, {once: true});
+        return 
+    }  
 }
