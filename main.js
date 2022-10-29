@@ -73,7 +73,7 @@ let indList2 = 0;
 let langSelect = document.getElementById('language');
 let isResizeble = false;
 setTimeout(loadQuote, 1000);
-searchQuote.addEventListener('click', loadQuote);
+searchQuote.addEventListener('click', loadQuote, {once:true});
 searchQuote.removeEventListener('click', loadQuote); 
 
 

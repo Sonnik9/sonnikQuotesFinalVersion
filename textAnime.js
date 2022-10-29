@@ -21,7 +21,8 @@ typewriterAuthor = () => {
     else {
         textPosition2 = 0;
         isResizeble = false;
-        searchQuote.addEventListener('click', loadQuote, {once: true});
+        searchQuote.addEventListener('click', loadQuote, {once:true});
+        // searchQuote.removeEventListener('click', loadQuote);
         return 
     }  
 }
