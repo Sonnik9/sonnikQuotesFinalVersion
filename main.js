@@ -1,5 +1,3 @@
- 
-//////////////////////////////////////////////////////////////////////////////////
 let bodyContainer = document.querySelector('.bodyClass');
 let headerItem = document.getElementById('header-item');
 let containerPageHome = document.getElementById('containerPageHome');
@@ -76,9 +74,10 @@ let langSelect = document.getElementById('language');
 searchQuote.addEventListener('click', loadQuote);
 
 function randomChoise() {  
-  indList++
-  textContainer.textContent = dataQuotes[arrDirectRow[indList]].text; 
-  authorContainer.textContent =  dataQuotes[arrDirectRow[indList]].author;
+  indList++; 
+  textContainer.textContent = '';
+  authorContainer.textContent = '';
+  typewriterForText(); 
   curentId = dataQuotes[arrDirectRow[indList]].id;
     if(indList==867)
        indList=0;  
@@ -86,7 +85,11 @@ function randomChoise() {
 
 function randomChoiseForImg() {  
   indList2++
-  imgAlt.src = dataImgForBtn[arrDirectRowForImg[indList2]].newSrc; 
+  imgAlt.src = '';
+  imgAlt.src = dataImgForBtn[arrDirectRowForImg[indList2]].newSrc;
+  imgAlt.classList.add('altImgAnimation');
+  setTimeout(function() {imgAlt.classList.remove('altImgAnimation')}, 1100);  
+  // imgAlt.style.animationPlayState = 'running'; 
     if(indList2==99)
        indList2=0;  
 }
@@ -99,9 +102,7 @@ function loadQuote() {
                            onchange="readyText(dataQuotes)">
                             <option value="en">EN</option>                
                             <option value="ru">RU</option>         
-                           </select>  `; 
-                           
-  // convert('en', 'ru');                 
+                           </select>  `;                  
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -207,47 +208,49 @@ function saveCurentQuote() {
   }
 }
  
-function removeItemCase(e) {     
+function removeItemCase(e) {  
     
-    let imgId = document.querySelectorAll('.hide');
-    imgId.forEach((el, ind) => {
-      el.dataset.order = ind;
-        });
-    let arrCase = getCase();
     if(e.target.className == 'hide') { 
+      let imgId = document.querySelectorAll('.hide');
+      imgId.forEach((el, ind) => {
+        el.dataset.order = ind;
+      });  
+      
+      console.log(e.target.dataset.order)
+      let arrCase = getCase();
       smoke.confirm(('Are you realy want to remove this quote?'), function (result) {
         if (result === false || (result === false && result === true)) {
           setTimeout(function(){containerPageMyCase.addEventListener('click', removeItemCase, {once: true})}, 300);
           return;
         }       
-         
+        console.log(arrCase)
          arrCase.splice(e.target.dataset.order, 1);
+         console.log(arrCase)
          let postBlock = e.target.parentElement.parentElement.parentElement; 
          let currentHeight = Math.floor(JSON.parse(getComputedStyle(postBlock).height.slice(0, -2)));    
          postBlock.style.animationPlayState = 'running';          
-         setTimeout(movessAnime, 600); 
+         movessAnime(); 
          
          function movessAnime() {  
            if(currentHeight != 0) {
-             currentHeight = currentHeight - 15;  
+             currentHeight = currentHeight - 1;  
              postBlock.style.height = currentHeight + 'px';   
-             setTimeout(movessAnime, 1);
+             setTimeout(movessAnime, 0.1);
            }
            else { 
-             postBlock.height = '0px'      
+                 
              return  
            }        
          }
         
-         // setTimeout(function (){postBlock.remove()}, 1500);    
+         setTimeout(function (){postBlock.remove()}, 700);    
          /////////////////////////////////////////////////////////////////    
          localStorage.setItem('case',  JSON.stringify(arrCase));
       
       }); 
      
     } 
-    setTimeout(function(){containerPageMyCase.addEventListener('click', removeItemCase, {once: true})}, 900);
- 
+    setTimeout(function(){containerPageMyCase.addEventListener('click', removeItemCase, {once: true})}, 900); 
 }
 
 // localStorage.removeItem('case')
