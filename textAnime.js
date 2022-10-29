@@ -22,7 +22,11 @@ typewriterAuthor = () => {
         textPosition2 = 0;
         isResizeble = false;
         searchQuote.addEventListener('click', loadQuote, {once:true});
-        // searchQuote.removeEventListener('click', loadQuote);
+        langSelect.innerHTML = `<select name="language" id="oLanguage" class="select"
+                                    onchange="readyText(dataQuotes)">
+                                    <option value="en">EN</option>
+                                    <option value="ru">RU</option>   
+                                </select>  `;
         return 
     }  
 }

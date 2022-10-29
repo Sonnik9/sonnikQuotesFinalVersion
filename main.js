@@ -106,9 +106,11 @@ function loadQuote() {
   langSelect.innerHTML = `<select name="language" id="oLanguage" class="select"
                            onchange="readyText(dataQuotes)">
                             <option value="en">EN</option>                
-                            <option value="ru">RU</option>         
+                                
                            </select>  `;                  
 }
+
+{/* <option value="ru">RU</option>      */}
 
 ///////////////////////////////////////////////////////////////////////////////
 
