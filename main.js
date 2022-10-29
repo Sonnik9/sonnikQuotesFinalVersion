@@ -66,17 +66,8 @@ let imgAlt = document.getElementById('altImg');
 let webImg = document.getElementById('webImgId');
 let myCase = document.getElementById('header-item');
 let saveQuote = document.getElementById('saveBox');
-let globalChange = '';
-let curentId = '';
-let obgRu = {
-    text: "",
-    avtor: ""
-};
-let obgEn = {
-    text: "",
-    avtor: ""
 
-};
+let curentId = '';
 let indList = 0;
 let indList2 = 0;
 
@@ -105,51 +96,15 @@ function loadQuote() {
   randomChoiseForImg()  
   randomChoise(); 
   langSelect.innerHTML = `<select name="language" id="oLanguage" class="select"
-                           onchange="readyText()">
+                           onchange="readyText(dataQuotes)">
                             <option value="en">EN</option>                
                             <option value="ru">RU</option>         
                            </select>  `; 
                            
-  convert('en', 'ru');                 
+  // convert('en', 'ru');                 
 }
 
 ///////////////////////////////////////////////////////////////////////////////
-
-async function convert(source, target){   
-  obgEn.text = textContainer.textContent;
-  obgEn.avtor = authorContainer.textContent;
-  obgRu.text = '';
-  obgRu.avtor = '';  
-  let q = obgEn.text + " " + "&&" + " " +  obgEn.avtor; 
-
-  data ={
-      q,
-      source,
-      target
-  }
-  data = JSON.stringify(data);  
-  
-  let res = await fetch("https://libretranslate.de/translate", {
-    method: "POST",
-    body: data,
-    headers: { "Content-Type": "application/json" }
-  });
-
-  let targetTranslation =  await res.json();
-  globalChange = targetTranslation.translatedText;
-      if(globalChange != '') {       
-        resultTransleting();
-      }     
-}
-
-function resultTransleting() {           
-    for (let i = 0; i < globalChange.length; i++) {    
-      if(globalChange[i] == '&') {     
-          obgRu.text += globalChange.slice(0, i-1);    
-          obgRu.avtor += globalChange.slice(i+2, globalChange.length);     
-      }       
-    }     
-}
 
 function pasterText(a, b) {
   textContainer.textContent = '';   
@@ -158,13 +113,13 @@ function pasterText(a, b) {
   authorContainer.textContent = b;   
 }
 
-function readyText() {
+function readyText(data) {
   let targetLanguage = document.getElementById('oLanguage').value;
-  if(targetLanguage == 'ru') {
-      pasterText(obgRu.text, obgRu.avtor)
+  if(targetLanguage == 'en') {
+      pasterText(data[arrDirectRow[indList]].text, data[arrDirectRow[indList]].author)
   }
   else {        
-      pasterText(obgEn.text, obgEn.avtor)
+      pasterText(data[arrDirectRow[indList]].textRu, data[arrDirectRow[indList]].authorRu)
   }   
 }
 
@@ -239,8 +194,8 @@ function saveCurentQuote() {
       if(flagRepetitions == true) {
         casse
           .push({
-            en: `${obgEn.text} <br> <p class="spanAuthor">${obgEn.avtor}</p>`,
-            ru: `${obgRu.text} <br> <p class="spanAuthor">${obgRu.avtor}</p>`,
+            en: `${dataQuotes[arrDirectRow[indList]].text} <br> <p class="spanAuthor">${dataQuotes[arrDirectRow[indList]].author}</p>`,
+            ru: `${dataQuotes[arrDirectRow[indList]].textRu} <br> <p class="spanAuthor">${dataQuotes[arrDirectRow[indList]].authorRu}</p>`,
             id: `${curentId}`
           });
       }    
