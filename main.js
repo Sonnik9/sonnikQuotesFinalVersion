@@ -1,32 +1,37 @@
+
 let bodyContainer = document.querySelector('.bodyClass');
 let headerItem = document.getElementById('header-item');
 let containerPageHome = document.getElementById('containerPageHome');
 let containerPageMyCase = document.getElementById('containerPageMyCase');
+let successSavedId = document.getElementById('successSavedId');
 let arrDirectRow = [];
 let arrDirectRowForImg = [];
-let homeTemplate = `<h1>Daily Quotes</h1>
+let homeTemplate = ` <div class="titule-block">
+                        <h1>Daily Quotes</h1>
+                        <i id="searchBtn" class="fa-solid fa-magnifying-glass btn"></i>                         
+                      </div>
 
                     <div class="container-img">                     
                       <img id="altImg" class="altImg" Alt="Image Of Nature">  
                     </div>        
                     
                     <div class="border-frame">
-                      <div id="textQuotes" class="border-textQuotes">                
+                      <div class="bufer-for-lock">
+                      <div class="language" id="language">             
+                         </div>
+                      <div class="saveBox" id="saveBox">
+                          <i class="fa-solid fa-lock saveInCase" id="lockId"></i>                        
+                      </div> 
                       </div>
-                      <div id="author" class="author">                  
+                      
+                      <div id="textQuotes" class="border-textQuotes">
+                                     
+                      </div>
+                          <div id="author" class="author">                  
                       </div>       
                     </div>           
                     
-                    <div class="control">
-                      <button id="searchBtn" class="btn">
-                        Search
-                      </button>
-                      <div class="saveBox" id="saveBox" data-title="Save">
-                        <img class="saveInCase" src="./img/save--v1.png" alt="">
-                      </div>
-                      <div class="language" id="language">             
-                      </div>
-                    </div>`;
+                    `;
                     
 location.hash = 'home';
 
@@ -63,7 +68,7 @@ let searchQuote = document.getElementById('searchBtn');
 let imgAlt = document.getElementById('altImg');
 let webImg = document.getElementById('webImgId');
 let myCase = document.getElementById('header-item');
-let saveQuote = document.getElementById('saveBox');
+let saveQuote = document.querySelector('.fa-lock');
 
 let curentId = '';
 let indList = 0;
@@ -100,17 +105,19 @@ function randomChoiseForImg() {
 }
 
 function loadQuote() {
+  saveQuote.classList.remove('fa-lock-open');
+  saveQuote.classList.add('fa-lock');
   setTimeout(function() {saveQuote.addEventListener('click', saveCurentQuote)}, 1000);
   randomChoiseForImg()  
   randomChoise(); 
   langSelect.innerHTML = `<select name="language" id="oLanguage" class="select"
                            onchange="readyText(dataQuotes)">
-                            <option value="en">EN</option>                
+                            <option class= "option" value="en">EN</option>                
                                 
                            </select>  `;                  
 }
 
-{/* <option value="ru">RU</option>      */}
+/* <option value="ru">RU</option>      */
 
 ///////////////////////////////////////////////////////////////////////////////
 
@@ -191,6 +198,13 @@ function getCase() {
 }
 
 function saveCurentQuote() {
+  saveQuote.classList.remove('fa-lock');
+  saveQuote.removeEventListener('click', saveCurentQuote);
+  saveQuote.classList.add('fa-lock-open');
+  successSavedId.style.display = 'block';
+  successSavedId.classList.add('successAnime');
+  setTimeout(function() { successSavedId.classList.remove('successAnime'); successSavedId.style.display = 'none'}, 4200)
+
   let casse = getCase();
   casse.forEach(el =>  {
         if(curentId == el.id)

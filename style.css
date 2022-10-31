@@ -30,6 +30,7 @@ header {
 .header-item {
     cursor: pointer;   
     margin: 15px 0px 15px 0px;
+    border: 0px 0px 0px 2px solid #f8f9fa;
     color:  #f8f9fa;
     font-size: calc(18px + 10*(100vw/1242));
     background-color: transparent;    
@@ -187,18 +188,18 @@ h1 {
     line-height: calc(19px + 18*(100vw/1242));
     border: 4px solid #198754;
     border-radius: 10px;
-    text-align: center;   
+    text-align: left;   
 }
 
 .border-frame, .post {
     background-color: #f8f9fa;   
     margin-bottom: 20px;
     border-radius: 10px;
-    padding: 24px 24px 16px 24px;  
+    padding: 0px 24px 16px 24px;  
     color: rgba(33,37,41);   
 }
 
-.border-frame {
+.border-frame {  
     text-align: center;
     letter-spacing: 2px;
     overflow: hidden;
@@ -211,20 +212,23 @@ h1 {
     text-transform: uppercase;    
     margin-top: 12px;
     width: 100%;   
-} 
-.control {
+}
+ 
+.titule-block {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
+    align-items: center;
     -moz-user-select: -moz-none;
     -o-user-select: none;
     -khtml-user-select: none;
     -webkit-user-select: none;
-    user-select: none; 
+    user-select: none;   
+   
 }
 .btn {
     cursor: pointer;
     padding: 12px;
-    margin-right: 15px;
+    /* margin-right: 15px; */
     border: none;
     border-radius: 5px;
     text-align: center;
@@ -240,41 +244,114 @@ h1 {
     transition: 600ms;    
     font-size: calc(17.1px + 6*(100vw/1242));
 }
-.saveBox {
-    position: relative;
-    content: attr(data-title);
-    width: 55px;
-    height: 23px;
-    cursor: pointer;
+
+.saveBox {   
+    border: none;
+    background-color: transparent;
+    font-size: 25px; 
+    cursor: pointer;   
 }
-.saveInCase {
-    width: 25px;
-    height: 23px;
-    background-color: #f8f9fa;
-    margin-right: 15px; 
-    border-radius: 3px 9px 3px 3px;   
+
+.bufer-for-lock {    
+    display: flex;
+    justify-content: space-between;
+    align-items: center;    
 }
-.saveBox:hover::after {       
-    content: attr(data-title);   
-    position: absolute;
-    top: 127%;
-    left: 24%;  
-    background: #f8f9fa;    
-    border-radius: 3px 9px 3px 3px;
-    color: rgba(33,37,41);
-    font-weight: 700;
-    font-size: calc(8px + 4*(100vw/1242));
-    text-align: center;  
-    padding: 4px 4px;
-    opacity: 0.9;
+
+.saveInCase {   
+    padding: 6px 0px;  
 }
-.saveBox:hover {
-    filter: brightness(110%);
+
+.successfullFixConteiner {
+    position         : fixed;
+    left             : 0%;
+    top              : 10%;
+    width            : 100%;
+    background-color : rgba(0,0,0,.4);
+    z-index          : 1001;
+   
+    -moz-user-select: -moz-none;
+    -o-user-select: none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+    user-select: none;   
 }
+
+.sucessText {   
+    width: 67%;  
+    font-family: 'Lucida Console'; 
+    border-radius: 28px; 
+    margin           : 20px auto;
+    padding          : 15px;
+    color            : rgba(33,37,41); 
+    border           : 1px solid #B6B6B6; 
+    background-color :  #f8f9fa;
+    font-family      : 'Lucida Console';
+    font-size: calc(12px + 10*(100vw/1242));
+    font-weight      : 700;
+    text-align       : center; 
+}
+
+
+@keyframes successAnime {
+    0% {
+        opacity: 0;
+       
+    }
+
+    12% {
+        opacity: 0.25;
+      
+    }
+
+    24% {
+        opacity: 0.5;
+ 
+    }
+
+    36% {
+        opacity: 0.75;
+      
+    }
+
+    48% {
+        opacity: 1;
+        
+    }
+
+    60% {
+        opacity: 0.75;
+      
+    }
+
+    
+    72% {
+        opacity: 0.50;
+     
+    }
+
+    84% {
+        opacity: 0.25;
+ 
+    }
+
+    100% {
+        opacity: 0;
+ 
+    }
+}
+
+.successAnime {
+    animation-name: successAnime;
+    animation-duration: 4s;
+    animation-fill-mode: forwards;
+    animation-play-state: running; 
+}
+
 .select {
     cursor: pointer;
     color: rgba(33,37,41);
-    font-size: 17.5px;
+    font-size: 25px;
     font-weight: 700;
     background-color: #f8f9fa;
     border-radius: 4px;
@@ -282,7 +359,16 @@ h1 {
 }
 .select:hover {
     filter: brightness(110%);
+    /* background-color: #198754; */
 }
+
+/* .option {
+    background-color: #198754;
+    color: #fff;
+} */
+option:focus {
+    background-color: #198754;
+    }
 
 /* for page My Case */
 /* ////////////////////////////////////////////////////////////////// */
