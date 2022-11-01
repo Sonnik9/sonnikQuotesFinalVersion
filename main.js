@@ -6,9 +6,12 @@ let containerPageMyCase = document.getElementById('containerPageMyCase');
 let successSavedId = document.getElementById('successSavedId');
 let arrDirectRow = [];
 let arrDirectRowForImg = [];
-let homeTemplate = ` <div class="titule-block">
-                        <h1>Daily Quotes</h1>
-                        <i id="searchBtn" class="fa-solid fa-magnifying-glass btn"></i>                         
+let homeTemplate = ` <div class="titule-block">                        
+                        <p id="searchBtn" class="SearchText">
+                           Search
+                              <i class="fa-solid fa-magnifying-glass btn">
+                              </i>
+                          </p>                         
                       </div>
 
                     <div class="container-img">                     
@@ -20,7 +23,7 @@ let homeTemplate = ` <div class="titule-block">
                       <div class="language" id="language">             
                          </div>
                       <div class="saveBox" id="saveBox">
-                          <i class="fa-solid fa-lock saveInCase" id="lockId"></i>                        
+                          <i class="fa-solid fa-lock-open saveInCase" id="lockId"></i>                        
                       </div> 
                       </div>
                       
@@ -68,7 +71,7 @@ let searchQuote = document.getElementById('searchBtn');
 let imgAlt = document.getElementById('altImg');
 let webImg = document.getElementById('webImgId');
 let myCase = document.getElementById('header-item');
-let saveQuote = document.querySelector('.fa-lock');
+let saveQuote = document.querySelector('.fa-lock-open');
 
 let curentId = '';
 let indList = 0;
@@ -105,8 +108,8 @@ function randomChoiseForImg() {
 }
 
 function loadQuote() {
-  saveQuote.classList.remove('fa-lock-open');
-  saveQuote.classList.add('fa-lock');
+  saveQuote.classList.remove('fa-lock');
+  saveQuote.classList.add('fa-lock-open');
   setTimeout(function() {saveQuote.addEventListener('click', saveCurentQuote)}, 1000);
   randomChoiseForImg()  
   randomChoise(); 
@@ -198,12 +201,12 @@ function getCase() {
 }
 
 function saveCurentQuote() {
-  saveQuote.classList.remove('fa-lock');
+  saveQuote.classList.remove('fa-lock-open');
   saveQuote.removeEventListener('click', saveCurentQuote);
-  saveQuote.classList.add('fa-lock-open');
+  saveQuote.classList.add('fa-lock');
   successSavedId.style.display = 'block';
   successSavedId.classList.add('successAnime');
-  setTimeout(function() { successSavedId.classList.remove('successAnime'); successSavedId.style.display = 'none'}, 4200)
+  setTimeout(function() { successSavedId.classList.remove('successAnime'); successSavedId.style.display = 'none'}, 4700)
 
   let casse = getCase();
   casse.forEach(el =>  {
