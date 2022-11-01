@@ -36,7 +36,7 @@ header {
 }
 
 .header-item {
-    cursor: pointer;   
+    cursor: pointer;     
     margin: 15px 0px 15px 0px;
     border: 0px 0px 0px 2px solid #f8f9fa;
     color:  #f8f9fa;
@@ -49,8 +49,7 @@ header {
     user-select: none;
 }
 .header-item:hover {
-    filter: brightness(130%);
-    font-size: calc(19px + 10*(100vw/1242));
+    filter: brightness(140%);    
 }
 .container-img {
     width: 100%;
@@ -185,7 +184,10 @@ header {
 }
 
 h1 {
-    font-size: calc(24px + 16*(100vw/1242));
+    font-size: 35px;
+    /* vertical-align: middle; */
+    display: flex;
+    align-items: center;
     color: #f8f9fa;
     -moz-user-select: -moz-none;
     -o-user-select: none;
