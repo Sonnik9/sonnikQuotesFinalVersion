@@ -6,12 +6,10 @@ let containerPageMyCase = document.getElementById('containerPageMyCase');
 let successSavedId = document.getElementById('successSavedId');
 let arrDirectRow = [];
 let arrDirectRowForImg = [];
-let homeTemplate = ` <div class="titule-block">                        
-                        <p id="searchBtn" class="SearchText">
-                           Search
-                              <i class="fa-solid fa-magnifying-glass btn">
-                              </i>
-                          </p>                         
+let homeTemplate = ` <div id="searchBtn" class="titule-block">                   
+                        <i class="fa-solid fa-magnifying-glass btn">
+                        </i>
+                                                  
                       </div>
 
                     <div class="container-img">                     
